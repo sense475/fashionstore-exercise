@@ -1,19 +1,12 @@
 import ProductList from "@/components/ProductList";
-import { useState } from "react";
+import { useProductList } from "@/hooks/useProduct";
+
 
 export default function Home() {
-  const [productName, setProductName] = useState("");
-  const [products, setProducts] = useState([
+  const { productName, setProductName, products, onRemoveProduct, onAddProduct } = useProductList([
     { name: "Loose Cropped Jeans (Damaged)" },
     { name: "Smart Skort Solid" },
   ]);
-  const onRemoveProduct = (name: string) => {
-    setProducts(products.filter((product) => name !== product.name));
-  };
-
-  const onAddProduct = (name: string) => {
-    setProducts([...products, { name }]);
-  };
 
   return (
     <>
